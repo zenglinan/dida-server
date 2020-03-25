@@ -1,12 +1,13 @@
 ### 1. 常用的中间件
 - koa-router
-- koa-body
-- koa-json
-- @koa/cors
-- koa-static
-- koa-combine-routers
-- koa-helmet
-- koa-compose
+- koa-body: 解析请求体
+- koa-json: 
+- @koa/cors: 设置允许跨域
+- koa-static: 静态资源处理
+- koa-combine-routers: 整合路由
+- koa-helmet: 给 http 响应添加安全响应头
+- koa-compose: 整合中间件
+- koa-compress: 压缩中间件
 
 ### 2. 在 Node 中使用 webpack 进行配置
 
@@ -27,3 +28,7 @@ new webpack.DefinePlugin({
   }
 })
 ```
+
+### 6. 生产模式下的优化
+- webpack 开启 js 压缩和代码分割
+- 使用 koa-compress 压缩中间件

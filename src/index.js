@@ -6,6 +6,9 @@ import koaBody from 'koa-body'
 import json from 'koa-json'
 import cors from '@koa/cors'
 import compose from 'koa-compose'
+import compress from 'koa-compress'
+
+const isDevMode = process.env.NODE_ENV === 'production' ? false : true 
 
 const app = new Koa()
 const middleware = compose([
@@ -15,6 +18,11 @@ const middleware = compose([
   helmet(),
   json({ pretty: false, param: 'pretty' })
 ])
+
+// 生产模式下 压缩中间件
+if(!isDevMode) {
+  app.use(compress())
+}
 
 app.use(middleware)
 app.use(router())
