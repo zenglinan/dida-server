@@ -7,15 +7,27 @@ const webpackConfig = webpackMerge(baseConfig, {
   mode: 'production',
   stats: { children: false, warnings: false },
   optimization: {
-    minimize: [
-      new TerserWebpackPlugin({
-        compress: {
-          warnings: false,
-          drop_console: false
-        },
-        sourceMap: false
+    minimizer: [
+      new TerserWebpackPlugin({ // 压缩 js
+        terserOptions: {
+          compress: {
+            warnings: false,
+            drop_console: false
+          },
+          sourceMap: false
+        }
       })
-    ]
+    ],
+    splitChunks: {  // 代码分割
+      cacheGroups: {
+        commons: {
+          name: 'commons',
+          chunks: 'initial',
+          minChunks: 3,
+          enforce: true
+        }
+      }
+    }
   }
 })
 
