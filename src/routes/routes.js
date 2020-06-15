@@ -1,8 +1,6 @@
-const routerA = require('./aRouter')
-const routerB = require('./bRouter')
-const combine = require('koa-combine-routers')
+import routerA from './public';
+import combine from 'koa-combine-routers';
 
-module.exports = combine(
-  routerA,
-  routerB
-)
+const combinedRouter = combine(routerA);
+
+export default combinedRouter;

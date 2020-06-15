@@ -32,3 +32,6 @@ new webpack.DefinePlugin({
 ### 6. 生产模式下的优化
 - webpack 开启 js 压缩和代码分割
 - 使用 koa-compress 压缩中间件
+
+### 7. 生成图形验证码
+svg-captcha

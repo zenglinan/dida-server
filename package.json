@@ -5,8 +5,19 @@
   "main": "index.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.config.prod.js",
-    "dev": "cross-env NODE_ENV=development nodemon --exec babel-node src/index.js"
+    "dev": "cross-env NODE_ENV=development nodemon --exec babel-node src/index.js",
+    "lint": "eslint .",
+    "fix": "eslint --fix ."
   },
+  "pre-commit": [
+    "fix",
+    "lint"
+  ],
+  "eslintIgnore": [
+    "node_modules",
+    "config",
+    "dist"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -17,7 +28,9 @@
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "cross-env": "^7.0.2",
+    "eslint": "^7.2.0",
     "nodemon": "^2.0.2",
+    "pre-commit": "^1.2.2",
     "terser-webpack-plugin": "^2.3.5",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
@@ -34,6 +47,7 @@
     "koa-helmet": "^5.2.0",
     "koa-json": "^2.0.2",
     "koa-router": "^8.0.8",
-    "koa-static": "^5.0.0"
+    "koa-static": "^5.0.0",
+    "svg-captcha": "^1.4.0"
   }
 }
